@@ -18,6 +18,11 @@ const AddNewTaskPopup = ({ addTodoTaskHandler, toggleNewTaskPopup }) => {
           onChange={(e) => setMyTask(e.target.value)}
           value={myTask}
           placeholder="Add task"
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              onSaveTask();
+            }
+          }}
         />
         <div className="saveTask" onClick={onSaveTask}>Save</div>
       </div>
