@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react';
 
 import './AddNewTask.css';
 
-const AddNewTask = () => {
+import AddNewTaskPopup from './addNewTaskPopup';
+
+const AddNewTask = ({ addTodoTaskHandler }) => {
+  const [isNewTaskPopupVisible, setNewTaskPopupVisiblity] = useState(false);
+  const toggleNewTaskPopup = () => setNewTaskPopupVisiblity(!isNewTaskPopupVisible)
   return (
-    <div className="AddNewTask">
-      <span className="icon">+</span>Add a new task
-    </div>
+    <Fragment>
+      <div
+        className="AddNewTask"
+        onClick={toggleNewTaskPopup}
+      >
+        <span className="icon">+</span>Add a new task
+      </div>
+      {
+        isNewTaskPopupVisible &&
+        <Fragment>
+          <AddNewTaskPopup
+            addTodoTaskHandler={addTodoTaskHandler}
+            toggleNewTaskPopup={toggleNewTaskPopup}
+          />
+          <div className="AddNewTaskOverlay" onClick={toggleNewTaskPopup} />
+        </Fragment>
+      }
+    </Fragment>
   )
 }
 

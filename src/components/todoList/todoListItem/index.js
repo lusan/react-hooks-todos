@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import './TodoListItem.css'
 
@@ -10,7 +10,7 @@ const TodoListItem = ({ title }) => {
           type="checkbox"
           checked="checked"
         />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
         {title}
       </label>
     </div>

@@ -1,19 +1,16 @@
-import React, { Fragment } from 'react';
-import todoListData from './todolistData';
+import React from 'react';
 
 import TodoListItem from './todoListItem';
 
 import './TodoList.css'
 
-const TodoList = (props) => {
-  const { children } = props;
-  const { todolist = [] } = todoListData;
+const TodoList = ({ payload = [] }) => {
   return (
     <div className="TodoList">
       <ul>
         {
-          !!todolist.length &&
-          todolist.map((item) => (
+          !!payload.length &&
+          payload.map((item) => (
             <li key={`todolist${item.id}`}>
               <TodoListItem
                 title={item.title}
