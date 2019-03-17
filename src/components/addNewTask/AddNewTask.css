@@ -1,0 +1,21 @@
+.AddNewTask {
+  background: #2196f3;
+  position: fixed;
+  bottom: 32px;
+  color: #fff;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 32px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.AddNewTask .icon {
+  position: absolute;
+  left: 21px;
+  font-size: 21px;
+}

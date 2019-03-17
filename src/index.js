@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
+import Header from './components/header';
+import TodoList from './components/todoList';
+import CompletedList from './components/completedList';
+import AddNewTask from './components/addNewTask';
+
+
 import "./styles.css";
 
 function TodoApp() {
   const [todoItems, setTodoItems] = useState([]);
   const [todo, setTodos] = useState('');
-  
+
   function addTodoItem() {
     console.log(todo)
     setTodoItems(todoItems.concat(todo));
@@ -17,7 +23,7 @@ function TodoApp() {
       .then(res => res.json())
       .then(
         (result) => {
-          setTodoItems(result); 
+          setTodoItems(result);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -28,7 +34,7 @@ function TodoApp() {
       )
     }, []
   );
-  
+
   return (
     <React.Fragment>
       <div>
@@ -45,7 +51,14 @@ function TodoApp() {
 function App() {
   return (
     <div className="App">
-      <TodoApp />
+      <Header
+        title={'My Tasks'}
+      />
+      <div className="PageLayout">
+        <TodoList />
+        {/* <CompletedList /> */}
+        <AddNewTask />
+      </div>
     </div>
   );
 }
