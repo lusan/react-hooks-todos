@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 
 import './AddNewTask.css';
 
-import AddNewTaskPopup from './addNewTaskPopup';
+import AddNewTaskPopup from '../addNewTaskPopup';
 
 const AddNewTask = ({ addTodoTaskHandler }) => {
   const [isNewTaskPopupVisible, setNewTaskPopupVisiblity] = useState(false);

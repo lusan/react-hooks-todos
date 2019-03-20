@@ -1,9 +1,16 @@
 import React from 'react'
 
-const CompletedList = () => {
+const CompletedList = ({ list = [] }) => {
   return (
     <div>
-      Completed List
+      <div>Completed List</div>
+      <ul>
+        {
+          list.map((item) => (
+            <li>{item.title}</li>
+          ))
+        }
+      </ul>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import TodoListItem from './todoListItem';
 
 import './TodoList.css'
 
-const TodoList = ({ payload = [] }) => {
+const TodoList = ({ payload = [], completeTodoTaskHandler }) => {
   return (
     <div className="TodoList">
       <ul>
@@ -14,6 +14,8 @@ const TodoList = ({ payload = [] }) => {
             <li key={`todolist${item.id}`}>
               <TodoListItem
                 title={item.title}
+                id={item.id}
+                completeTodoTaskHandler={completeTodoTaskHandler}
               />
             </li>
           ))

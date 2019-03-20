@@ -5,7 +5,7 @@ import todoListData from './components/todoList/todolistData';
 
 import Header from './components/header';
 import TodoList from './components/todoList';
-// import CompletedList from './components/completedList';
+import CompletedList from './components/completedList';
 import AddNewTask from './components/addNewTask';
 
 import "./styles.css";
@@ -13,6 +13,7 @@ import "./styles.css";
 function App() {
   const { todolist } = todoListData;
   const [ todoListPayload, setTodoListPayload ] = useState(todolist);
+  const [ completedTodoList, setCompletedTodoList ] = useState([]);
 
   const addTodoTaskHandler = (value) => {
     setTodoListPayload([
@@ -24,8 +25,26 @@ function App() {
     ])
   }
 
+  const completeTodoTaskHandler = ({ id }) => {
+    // Get item to remove
+    let filteredTodoItem =
+      todoListPayload.find((item) => item.id === id);
+
+    // Remove from the set of todo list
+    const filteredTodoList =
+      todoListPayload.filter((item) => item.id !== id);
+      setTodoListPayload(filteredTodoList);
+
+    // add in the completed todo list
+    setCompletedTodoList([
+      ...completedTodoList,
+      filteredTodoItem
+    ]);
+  }
+
   useEffect(() => {
     console.log(todoListPayload)
+    console.log(completedTodoList)
   })
 
   return (
@@ -36,8 +55,11 @@ function App() {
       <div className="PageLayout">
         <TodoList
           payload={todoListPayload}
+          completeTodoTaskHandler={completeTodoTaskHandler}
         />
-        {/* <CompletedList /> */}
+        <CompletedList
+          list={completedTodoList}
+        />
         <AddNewTask
           addTodoTaskHandler={addTodoTaskHandler}
         />
