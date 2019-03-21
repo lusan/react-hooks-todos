@@ -1,68 +1,62 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
-import todoListData from './components/todoList/todolistData';
+import todoListData from "./components/todoList/todolistData";
 
-import Header from './components/header';
-import TodoList from './components/todoList';
-import CompletedList from './components/completedList';
-import AddNewTask from './components/addNewTask';
+import Header from "./components/header";
+import TodoList from "./components/todoList";
+import CompletedList from "./components/completedList";
+import AddNewTask from "./components/addNewTask";
 
 import "./styles.css";
 
 function App() {
   const { todolist } = todoListData;
-  const [ todoListPayload, setTodoListPayload ] = useState(todolist);
-  const [ completedTodoList, setCompletedTodoList ] = useState([]);
+  const [todoListPayload, setTodoListPayload] = useState(todolist);
+  const [completedTodoList, setCompletedTodoList] = useState([]);
 
-  const addTodoTaskHandler = (value) => {
+  const addTodoTaskHandler = value => {
     setTodoListPayload([
       ...todoListPayload,
       {
         id: Math.random(),
         title: value
       }
-    ])
-  }
+    ]);
+  };
+
+  const removeTodoTaskHandler = ({ id }) => {
+    // Remove from the set of todo list
+    const filteredTodoList = todoListPayload.filter(item => item.id !== id);
+
+    setTodoListPayload(filteredTodoList);
+  };
 
   const completeTodoTaskHandler = ({ id }) => {
     // Get item to remove
-    let filteredTodoItem =
-      todoListPayload.find((item) => item.id === id);
+    let filteredTodoItem = todoListPayload.find(item => item.id === id);
 
-    // Remove from the set of todo list
-    const filteredTodoList =
-      todoListPayload.filter((item) => item.id !== id);
-      setTodoListPayload(filteredTodoList);
+    removeTodoTaskHandler({ id });
 
     // add in the completed todo list
-    setCompletedTodoList([
-      ...completedTodoList,
-      filteredTodoItem
-    ]);
-  }
+    setCompletedTodoList([...completedTodoList, filteredTodoItem]);
+  };
 
   useEffect(() => {
-    console.log(todoListPayload)
-    console.log(completedTodoList)
-  })
+    console.log(todoListPayload);
+    console.log(completedTodoList);
+  });
 
   return (
     <div className="App">
-      <Header
-        title={'My Tasks'}
-      />
+      <Header title={"My Tasks"} />
       <div className="PageLayout">
         <TodoList
           payload={todoListPayload}
           completeTodoTaskHandler={completeTodoTaskHandler}
         />
-        <CompletedList
-          list={completedTodoList}
-        />
-        <AddNewTask
-          addTodoTaskHandler={addTodoTaskHandler}
-        />
+        <CompletedList list={completedTodoList} />
+        <AddNewTask addTodoTaskHandler={addTodoTaskHandler} />
       </div>
     </div>
   );

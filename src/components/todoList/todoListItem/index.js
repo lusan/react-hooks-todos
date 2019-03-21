@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-import './TodoListItem.css'
+import "./TodoListItem.css";
 
 const TodoListItem = ({ title, id, completeTodoTaskHandler }) => {
   const [isTodoChecked, setTodoCheck] = useState(false);
@@ -9,7 +9,7 @@ const TodoListItem = ({ title, id, completeTodoTaskHandler }) => {
     setTodoCheck(!isTodoChecked);
     // TODO below line should execute after
     // state is set
-    completeTodoTaskHandler({ id })
+    completeTodoTaskHandler({ id });
   };
 
   return (
@@ -20,11 +20,11 @@ const TodoListItem = ({ title, id, completeTodoTaskHandler }) => {
           checked={isTodoChecked}
           onChange={handleTodoItemCheck}
         />
-        <span className="checkmark"></span>
+        <span className="checkmark" />
         {title}
       </label>
     </div>
-  )
-}
+  );
+};
 
-export default TodoListItem
+export default TodoListItem;

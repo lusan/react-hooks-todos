@@ -1,22 +1,19 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState } from "react";
 
-import './AddNewTask.css';
+import "./AddNewTask.css";
 
-import AddNewTaskPopup from '../addNewTaskPopup';
+import AddNewTaskPopup from "../addNewTaskPopup";
 
 const AddNewTask = ({ addTodoTaskHandler }) => {
   const [isNewTaskPopupVisible, setNewTaskPopupVisiblity] = useState(false);
-  const toggleNewTaskPopup = () => setNewTaskPopupVisiblity(!isNewTaskPopupVisible)
+  const toggleNewTaskPopup = () =>
+    setNewTaskPopupVisiblity(!isNewTaskPopupVisible);
   return (
     <Fragment>
-      <div
-        className="AddNewTask"
-        onClick={toggleNewTaskPopup}
-      >
+      <div className="AddNewTask" onClick={toggleNewTaskPopup}>
         <span className="icon">+</span>Add a new task
       </div>
-      {
-        isNewTaskPopupVisible &&
+      {isNewTaskPopupVisible && (
         <Fragment>
           <AddNewTaskPopup
             addTodoTaskHandler={addTodoTaskHandler}
@@ -24,9 +21,9 @@ const AddNewTask = ({ addTodoTaskHandler }) => {
           />
           <div className="AddNewTaskOverlay" onClick={toggleNewTaskPopup} />
         </Fragment>
-      }
+      )}
     </Fragment>
-  )
-}
+  );
+};
 
-export default AddNewTask
+export default AddNewTask;
