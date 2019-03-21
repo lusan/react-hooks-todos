@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
-import todoListData from "./components/todoList/todolistData";
+import todoListData from "./containers/todoList/todolistData";
 
-import Header from "./components/header";
-import TodoList from "./components/todoList";
-import CompletedList from "./components/completedList";
-import AddNewTask from "./components/addNewTask";
+import Header from "./containers/header";
+import TodoList from "./containers/todoList";
+import CompletedList from "./containers/completedList";
+import AddNewTask from "./containers/addNewTask";
 
 import "./styles.css";
 

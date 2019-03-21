@@ -5,8 +5,8 @@ const CompletedList = ({ list = [] }) => {
     <div>
       <div>Completed List</div>
       <ul>
-        {list.map(item => (
-          <li>{item.title}</li>
+        {list.map((item, index) => (
+          <li key={`completedlist${index}`}>{item.title}</li>
         ))}
       </ul>
     </div>
