@@ -7,7 +7,7 @@ import Header from "./containers/header";
 import TodoList from "./containers/todoList";
 import CompletedList from "./containers/completedList";
 import AddNewTask from "./containers/addNewTask";
-
+import Clock from "./components/Clock";
 import "./styles.css";
 
 function App() {
@@ -50,6 +50,7 @@ function App() {
   return (
     <div className="App">
       <Header title={"My Tasks"} />
+      <Clock />
       <div className="PageLayout">
         <TodoList
           payload={todoListPayload}
