@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import ReactDOM from "react-dom";
 
 import todoListData from "./containers/todoList/todolistData";
 
 import Header from "./containers/header";
-import TodoList from "./containers/todoList";
-import CompletedList from "./containers/completedList";
-import AddNewTask from "./containers/addNewTask";
+// import CompletedList from "./containers/completedList";
+// import AddNewTask from "./containers/addNewTask";
 import Clock from "./components/Clock";
 import "./styles.css";
+
+const TodoList = React.lazy(() => import("./containers/todoList"));
+const CompletedList = React.lazy(() => import("./containers/completedList"));
+const AddNewTask = React.lazy(() => import("./containers/addNewTask"));
 
 function App() {
   const { todolist } = todoListData;
@@ -52,12 +55,14 @@ function App() {
       <Header title={"My Tasks"} />
       <Clock />
       <div className="PageLayout">
-        <TodoList
-          payload={todoListPayload}
-          completeTodoTaskHandler={completeTodoTaskHandler}
-        />
-        <CompletedList list={completedTodoList} />
-        <AddNewTask addTodoTaskHandler={addTodoTaskHandler} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <TodoList
+            payload={todoListPayload}
+            completeTodoTaskHandler={completeTodoTaskHandler}
+          />
+          <CompletedList list={completedTodoList} />
+          <AddNewTask addTodoTaskHandler={addTodoTaskHandler} />
+        </Suspense>
       </div>
     </div>
   );

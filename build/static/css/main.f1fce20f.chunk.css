@@ -1,0 +1,28 @@
+.Header {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  z-index: 1;
+  background: #fff;
+  line-height: 60px;
+  color: #333;
+  font-size: 21px;
+  text-align: left;
+  padding-left: 32px;
+  top: 0;
+  left: 0;
+}
+.Clock {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.PageLayout {
+  margin-top: 70px;
+}
+/*# sourceMappingURL=main.f1fce20f.chunk.css.map */
